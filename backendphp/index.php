@@ -22,10 +22,17 @@ error_log("URI: " . $_SERVER['REQUEST_URI']);
 error_log("Parsed URI: " . $uri);
 error_log("Params: " . print_r($params, true));
 
-if (isset($params[0]) && $params[0] === 'productos') {
-    require_once __DIR__ . '/routes/product.php';
-    handleProductRoutes($pdo, $params);
+if (isset($params[0])) {
+    if ($params[0] === 'productos') {
+        require_once __DIR__ . '/routes/product.php';
+        handleProductRoutes($pdo, $params);
+    } elseif ($params[0] === 'loginGoogle') {
+        require_once __DIR__ . '/routes/loginGoogle.php';
+        // Aquí debes llamar a la función que maneja loginGoogle, si la tienes definida.
+    } else {
+        require_once __DIR__ . '/api/response.php';
+        ResponseHelper::error("Ruta no encontrada", 404);
+    }
 } else {
-    require_once __DIR__ . '/api/response.php';
     ResponseHelper::error("Ruta no encontrada", 404);
 }

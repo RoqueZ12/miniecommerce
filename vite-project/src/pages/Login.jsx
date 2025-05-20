@@ -16,7 +16,7 @@ function Login() {
 
       // 🔒 Validar token en tu backend PHP
       console.log("Token enviado:", token);
-      const response = await fetch("https://apirestphp.onrender.com/routes/loginGoogle.php", {
+      const response = await fetch("https://apirestphp.onrender.com/loginGoogle", {
       // const response = await fetch("http://localhost/PruebaTecnica/backendphp/routes/loginGoogle.php", {
           // const response = await fetch("http://localhost/PruebaTecnica/backendphp/config/firebase.php", {
         method: "POST",
