@@ -19,7 +19,7 @@ export async function loginWithGoogle() {
   try {
     const result = await signInWithPopup(auth, provider);
     const token = await result.user.getIdToken();
-    console.log("Token de Google:", token);
+  
     return token;
   } catch (error) {
     console.error("Error signing in with Google:", error);
