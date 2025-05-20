@@ -15,9 +15,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit();
 }
 
-require_once '../database/db.php';
-require_once '../config/firebase.php';
-require_once '../controllers/AuthController.php';
+require_once __DIR__ . '/../database/db.php';
+
+require_once __DIR__ . '/../config/firebase.php';
+
+require_once __DIR__ . '/../controllers/AuthController.php';
+
 
 $data = json_decode(file_get_contents("php://input"), true);
 $idToken = $data['idToken'] ?? null;
