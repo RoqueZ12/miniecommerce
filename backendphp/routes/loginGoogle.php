@@ -1,30 +1,20 @@
 <?php
-// Allowed origins
-$allowed_origins = [
-    "http://localhost:5173",
-    "https://miniecommerce-dun.vercel.app"
-];
 
-// Check and set CORS headers if origin is allowed
+$allowed_origins = ["https://miniecommerce-dun.vercel.app"];
+
 if (isset($_SERVER['HTTP_ORIGIN']) && in_array($_SERVER['HTTP_ORIGIN'], $allowed_origins)) {
     header("Access-Control-Allow-Origin: " . $_SERVER['HTTP_ORIGIN']);
-    header("Access-Control-Allow-Credentials: true");
-    header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
+    header("Vary: Origin");
+    header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
     header("Access-Control-Allow-Headers: Authorization, Content-Type, Accept");
-    header("Content-Type: application/json");
-} else {
-    // You can choose to block or allow default behavior here
-    // header("Access-Control-Allow-Origin: *"); // avoid if credentials:true
-    header("Content-Type: application/json");
+    header("Access-Control-Allow-Credentials: true");
 }
 
-// Handle preflight OPTIONS request and exit early
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
     exit();
 }
 
-// --- Your actual backend code below ---
 require_once '../database/db.php';
 require_once '../config/firebase.php';
 require_once '../controllers/AuthController.php';
