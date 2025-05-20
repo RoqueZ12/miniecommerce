@@ -1,0 +1,34 @@
+.category-container {
+  width: 100%;
+  padding: 10px 0;
+  margin: 20px auto;
+  justify-content: space-between;
+    display: flex
+;
+  background-color: rgba(45, 62, 187, 0.99);
+}
+
+.category-button {
+  background-color: #fff;
+  color: #2d3ebb;
+  border: 2px solid #2d3ebb;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 8px 20px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.category-button:hover,
+.category-button:focus,
+.category-button:active {
+  background-color: #58d80d;
+  color: #fff;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(45, 62, 187, 0.5);
+  transform: scale(0.98); /* Reducir ligeramente el tamaño para dar un efecto de presionado */
+}
+
+.category-button:focus {
+  box-shadow: 0 0 0 2px rgba(45, 62, 187, 0.5);
+}
