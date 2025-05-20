@@ -27,17 +27,38 @@ function Login() {
        body: JSON.stringify({ idToken: token })
       });
 
-      const data = await response.json();
+      // const data = await response.json();
+      // console.log("Respuesta del backend:", data);
+      // if (data.success) {
+      //   // Guardamos el token y navegamos
+      //   localStorage.setItem("token", token);
+      //   localStorage.setItem("nombre", data.nombre);
+      //   localStorage.setItem("email", data.email);
+      //   navigate("/home");
+      // } else {
+      //   setError("Token inválido. Acceso denegado.");
+      // }
+      const text = await response.text();
+      let data;
+
+      try {
+        data = JSON.parse(text);
+      } catch (e) {
+        console.error("Respuesta no es JSON:", text + e);
+        setError("Error inesperado del servidor.");
+        return;
+      }
+
       console.log("Respuesta del backend:", data);
       if (data.success) {
-        // Guardamos el token y navegamos
         localStorage.setItem("token", token);
         localStorage.setItem("nombre", data.nombre);
         localStorage.setItem("email", data.email);
         navigate("/home");
       } else {
-        setError("Token inválido. Acceso denegado.");
+        setError(data.error || "Token inválido. Acceso denegado.");
       }
+
     } catch (err) {
       console.error(err);
       setError("Error al iniciar sesión con Google.");
