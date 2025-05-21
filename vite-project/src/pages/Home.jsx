@@ -15,7 +15,7 @@ function Home() {
     const email = localStorage.getItem("email") || "";
     setUser({ nombre, email });
 
-    fetch("http://localhost/PruebaTecnica/backendphp/productos")
+    fetch("https://apirestphp.onrender.com/productos/")
         .then((res) => res.json())
         .then((data) => {
         setProductos(data);
