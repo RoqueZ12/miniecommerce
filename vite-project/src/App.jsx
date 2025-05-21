@@ -9,13 +9,13 @@ import './App.css'
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route
         path="/home"
         element={
           <PrivateRoute>
-            <Login />
+            <Home />
           </PrivateRoute>
         }
       />
