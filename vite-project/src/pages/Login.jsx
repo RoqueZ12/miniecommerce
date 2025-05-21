@@ -22,7 +22,7 @@ function Login() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,  // importante el "Bearer "
+          // Authorization: `Bearer ${token}`,  // importante el "Bearer "
         },
        body: JSON.stringify({ idToken: token })
       });
